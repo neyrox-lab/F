@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Convertisseur de lien non-cliquable</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; max-width: 600px; margin: auto; }
+    input, textarea, button { width: 100%; margin-top: 1em; padding: 0.5em; font-size: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Convertisseur de lien non-cliquable pour Discord</h1>
+  <p>Collez un lien ci-dessous, et récupérez une version non-cliquable (visuellement identique).</p>
+  <textarea id="input" rows="3" placeholder="Collez ici votre lien..."></textarea>
+  <button onclick="convertir()">Convertir</button>
+  <textarea id="output" rows="3" readonly placeholder="Lien non-cliquable ici..."></textarea>
+
+  <script>
+    function convertir() {
+      const lien = document.getElementById('input').value.trim();
+      // Insertion d'un caractère invisible après "https://" pour rendre le lien non cliquable sur Discord
+      const invisibleChar = '\u200B'; // Caractère invisible
+      const lienModifie = lien.replace('https://', 'https://' + invisibleChar);
+      document.getElementById('output').value = lienModifie;
+    }
+  </script>
+</body>
+</html>
